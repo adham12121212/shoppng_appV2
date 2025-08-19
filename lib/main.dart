@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => HomePageCubit()..getProduct()..getBanners()),
           BlocProvider(create: (context) => CartPageCubit()..getCart()),
           BlocProvider(create: (context) => WishlistPageCubit()..getWishlist()),
-
         ],
         child:GetMaterialApp(
       debugShowCheckedModeBanner: false,

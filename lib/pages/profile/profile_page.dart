@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import 'package:shoppng_app/helper/hive_helper.dart';
+import 'package:shoppng_app/pages/admin/addproductadmin.dart';
 
 import '../../constant/appbar.dart';
 import '../login/cubit/login_page_cubit.dart';
@@ -53,7 +54,10 @@ class ProfilePage extends StatelessWidget {
                       SizedBox(height: 40,),
                         _ProfileOptionCard(width, Icons.person, "My Profile"),
                         _ProfileOptionCard(width, Icons.settings, "Settings"),
-                        _ProfileOptionCard(width, Icons.help, "Help Center"),
+                        _ProfileOptionCard(width, Icons.help, "Help Center",
+                            onTap: () {
+                          Get.to(Addproductadmin());
+                            }),
                         _ProfileOptionCard(width, Icons.logout, "Logout",
                             onTap: () {
                               context.read<LoginPageCubit>().logout();

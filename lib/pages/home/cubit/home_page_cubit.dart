@@ -80,5 +80,31 @@ class HomePageCubit extends Cubit<HomePageState> {
     }
   }
 
+void AddProduct({required String? name,
+  required String? price,
+  required String? description,})async{
+    try{
+      emit(HomePageLoading( ));
+      final result = await DioHelper.postData("products",body: {
+        "name":name,
+        "price":price,
+        "description":description,
+
+      });
+      if(result.data["status_code"]<300){
+        emit(HomePageSuccess());
+        getProduct();
+      }else{
+        emit(HomePageError(message: "${result.data["message"]}"));
+      }
+
+    }catch(e){
+      emit(HomePageError(message: e.toString()));
+    }
+
+
+}
+
+
 
 }
